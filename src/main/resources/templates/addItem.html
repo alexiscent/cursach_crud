@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments :: head"></head>
+
+<body>
+    <div class="mainBody">
+        <div class="linkHolder">
+            <div>На основну сторінку</div>
+            <a th:href="@{${#httpServletRequest.requestURI.replaceAll('/add', '')}}"></a>
+        </div>
+        <h3 th:text="${pageName}"></h3>
+        <div class="mainInfo">
+            <div class="changeInfo">
+                <form th:method="post" th:object="${newItem}">
+                    <div th:each="field: ${fields}">
+                        <label th:for="${field[1]}" th:text="${field[0]}"></label>
+                        <input type="text" th:field="*{__${field[1]}__}">
+                    </div>
+                    <input type="submit" value="Зберегти">
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

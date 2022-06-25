@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments :: head"></head>
+
+<body>
+    <div class="mainBody">
+        <div class="linkHolder" th:each="content: ${mainContent}">
+            <h3 th:text="${content[0]}"></h3>
+            <a th:href="@{|/${content[1]}|}"></a>
+        </div>
+    </div>
+</body>
+
+</html>

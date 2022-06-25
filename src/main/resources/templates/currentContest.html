@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+
+<head th:replace="fragments :: head"></head>
+
+<body>
+    <div class="mainBody">
+        <div class="linkHolder">
+            <div>На головну</div>
+            <a href="/"></a>
+        </div>
+        <h3 th:text="${pageName}"></h3>
+        <div class="mainInfo">
+            <div class="showInfo">
+                <div class="contestant" th:each="content: ${mainContent}">
+                    <div class="linkHolder">
+                        <div th:text="${content.poet.name}"></div>
+                        <a th:href="@{|/poets/${content.id}|}"></a>
+                    </div>
+                    <div th:text="${content.script}"></div>
+                    <form th:method="delete" th:action="|/current/${content.id}|">
+                        <input type="submit" value="Видалити">
+                    </form>
+                </div>
+            </div>
+            <div class="changeInfo">
+                <div class="changeInfoSubDiv">
+                    <div class="title">Додати / Змінити</div>
+                    <form th:method="put" th:object="${newItem}" action="/current/add">
+                        <div>
+                            <label for="id">ID учасника</label>
+                            <input id="id" type="text" th:field="*{poet}">
+                            <label for="script">Сценарій виступу</label>
+                            <input type="text" th:field="*{script}">
+                        </div>
+                        <input type="submit" value="Зберегти">
+                    </form>
+                </div>
+                <div class="changeInfoSubDiv">
+                    <form th:method="put">
+                        <div>
+                            <label for="newOrder">Змінити порядок</label>
+                            <input type="text" id="newOrder" name="newOrder">
+                        </div>
+                        <input type="submit" value="Зберегти">
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="controls">
+            <form th:method="post"><input type="submit" value="Перенести в архів"></form>
+            <form th:method="delete"><input type="submit" value="Видалити всіх"></form>
+        </div>
+    </div>
+
+</body>
+
+</html>

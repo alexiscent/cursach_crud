@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments :: head"></head>
+
+<body>
+    <div class="mainBody">
+        <div class="linkHolder">
+            <div>На основну сторінку</div>
+            <a th:href="@{${#httpServletRequest.requestURI.replaceAll('\d', '')}}"></a>
+        </div>
+        <h3 th:text="${pageName}"></h3>
+        <div class="mainInfo">
+            <div class="showInfo">
+                <div class="linkHolder" th:each="field: ${primaryFields}">
+                    <div class="label" th:text="|${field[0]}:|"></div>
+                    <div>
+                        <div th:text="${mainContent.__${field[1]}__}"></div>
+                        <a th:unless="${field.length <= 2}" th:href="@{|/${field[2]}/${mainContent.__${field[3]}__}|}"></a>
+                    </div>
+                </div>
+                <form th:method="delete"><input type="submit" value="Видалити"></form>
+            </div>
+            <div class="changeInfo">
+                <div class="title">Змінити дані</div>
+                <form th:method="put" th:object="${mainContent}">
+                    <div th:each="field: ${primaryFields}" th:unless="${field.length > 2}">
+                        <label th:for="${field[1]}" th:text="${field[0]}"></label>
+                        <input type="text" th:field="*{__${field[1]}__}">
+                    </div>
+                    <input type="submit" value="Зберегти">
+                </form>
+            </div>
+        </div>
+        <div class="additionalInfo">
+            <div class="subInfo" th:each="content, status: ${additionalContent}">
+                <div class="title" th:text="${additionalFields[status.index][0]}"></div>
+                <div class="linkHolder" th:each="item: ${content}">
+                    <div th:text="${item[additionalFields[status.index][1]]}"></div>
+                    <a th:unless="${additionalFields[status.index].length <= 2}"
+                        th:href="@{|/${additionalFields[status.index][2]}/${item.id}|}"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

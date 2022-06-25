@@ -1,0 +1,106 @@
+body {
+    display: flex;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+    font-family: 'Spectral', serif;
+    background-color: #b87614;
+}
+
+div {
+    display: flex;
+    box-sizing: border-box;
+}
+
+.mainBody {
+    flex-direction: column;
+    width: 900px;
+    padding: 25px 30px;
+    min-height: 100vh;
+    background-color: #F3F9E3;
+    align-items: flex-start;
+}
+
+.additionalInfo {
+    align-items: flex-start;
+}
+
+.subInfo {
+    margin-top: 15px;
+    flex-direction: column;
+}
+
+.showInfo,
+.changeInfo,
+.additionalInfo {
+    flex-direction: column;
+    margin-top: 10px;
+}
+
+.contestant {
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+
+form div {
+    flex-direction: column;
+}
+
+.showInfo {
+    margin-right: 350px;
+}
+
+.subInfo div {
+    margin-bottom: 2px;
+}
+
+.label {
+    margin: 0 5px 4px 0;
+}
+
+input {
+    margin: 3px 0 8px;
+}
+
+.showInfo input {
+    margin-top: 20px;
+}
+
+.showInfo .contestant input {
+    margin-top: 3px;
+}
+
+.changeInfoSubDiv {
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+
+.controls {
+    margin-top: 10px;
+    flex-direction: column;
+}
+
+.controls form {
+    margin-top: 5px;
+}
+
+a {
+    top: 0;
+    left: 0;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+}
+
+.linkHolder {
+    position: relative;
+}
+
+h3 {
+    margin: 15px 0 0;
+}
+
+div .title {
+    margin: 0 0 5px;
+}

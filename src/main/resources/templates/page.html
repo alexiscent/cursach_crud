@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments :: head"></head>
+
+<body>
+    <div class="mainBody">
+        <div class="linkHolder">
+            <div>На головну</div>
+            <a href="/"></a>
+        </div>
+        <h3 th:text="${pageName}"></h3>
+        <div class="mainInfo">
+            <div class="showInfo">
+                <div class="linkHolder" th:each="content: ${mainContent}">
+                    <div th:text="${content[display]}"></div>
+                    <a th:href="@{|${#httpServletRequest.requestURI.replaceAll('/$', '')}/${content.id}|}"></a>
+                </div>
+                <form method="get" th:action="@{|${#httpServletRequest.requestURI.replaceAll('/$', '')}/add|}"><input type="submit" value="Додати"></form>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
